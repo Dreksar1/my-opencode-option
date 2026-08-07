@@ -1,0 +1,13 @@
+{
+	"plugin": ["oh-my-openagent@latest"],
+	"$schema": "https://opencode.ai/config.json",
+	"provider": {
+		"zhipu": {
+			"name": "ZhipuAI",
+			"options": {
+				"baseURL": "https://open.bigmodel.cn/api/paas/v4/",
+				"apiKey": "{env:ZHIPU_API_KEY}"
+			}
+		}
+	}
+}

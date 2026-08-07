@@ -1,0 +1,10 @@
+{
+  "theme": "opencode-bluebg",
+  "keybinds": {
+    "scrollbar_toggle": "ctrl+alt+s"
+  },
+  "plugin": [
+    "oh-my-openagent@latest",
+    "./plugins-custom/deepseek-balance"
+  ]
+}

@@ -1,0 +1,71 @@
+// OMO configuration
+{
+  "[opencode]": {
+    "$schema": "https://raw.githubusercontent.com/code-yeongyu/oh-my-openagent/dev/assets/omo.schema.json",
+    "agents": {
+      "hephaestus": {
+        "model": "deepseek/deepseek-v4-pro"
+      },
+      "oracle": {
+        "model": "deepseek/deepseek-v4-pro"
+      },
+      "librarian": {
+        "model": "deepseek/deepseek-v4-pro"
+      },
+      "explore": {
+        "model": "deepseek/deepseek-v4-pro"
+      },
+      "multimodal-looker": {
+        "model": "zhipuai/glm-4.6v"
+      },
+      "prometheus": {
+        "model": "deepseek/deepseek-v4-pro"
+      },
+      "metis": {
+        "model": "deepseek/deepseek-v4-pro"
+      },
+      "momus": {
+        "model": "deepseek/deepseek-v4-pro"
+      },
+      "atlas": {
+        "model": "deepseek/deepseek-v4-pro"
+      },
+      "sisyphus-junior": {
+        "model": "deepseek/deepseek-v4-pro"
+      },
+      "sisyphus": {
+        "model": "deepseek/deepseek-v4-pro"
+      }
+    },
+    "categories": {
+      "visual-engineering": {
+        "model": "zhipuai/glm-4.6v",
+        "variant": "high"
+      },
+      "ultrabrain": {
+        "model": "deepseek/deepseek-v4-pro"
+      },
+      "deep": {
+        "model": "deepseek/deepseek-v4-pro"
+      },
+      "artistry": {
+        "model": "deepseek/deepseek-v4-pro"
+      },
+      "quick": {
+        "model": "deepseek/deepseek-v4-flash"
+      },
+      "unspecified-low": {
+        "model": "deepseek/deepseek-v4-pro"
+      },
+      "unspecified-high": {
+        "model": "deepseek/deepseek-v4-pro"
+      },
+      "writing": {
+        "model": "deepseek/deepseek-v4-pro"
+      }
+    }
+  },
+  "_migrations": [
+    "2026-08-reasoning-unification"
+  ]
+}

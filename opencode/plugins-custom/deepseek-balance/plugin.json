@@ -1,0 +1,15 @@
+{
+  "name": "deepseek-balance",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "DeepSeek 余额监控 —— 启动初始化 + 实时追踪 + 进度条",
+  "author": "opencode_config",
+  "license": "MIT",
+  "exports": {
+    ".": "./index.tsx",
+    "./tui": "./index.tsx"
+  },
+  "opencode": {
+    "entry": "index.tsx"
+  }
+}
