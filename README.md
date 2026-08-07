@@ -1,6 +1,6 @@
 # my-opencode-option
 
-包含了我的 opencode 所有插件和配置。换新系统时**一键恢复**。
+包含了我的 opencode 所有插件和配置。换新系统时**一键恢复**。包含oh-my-opencode 和多个mcp
 
 ## 快速开始（推荐）
 
