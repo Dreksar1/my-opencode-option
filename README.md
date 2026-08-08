@@ -21,7 +21,22 @@ chmod +x setup.sh && ./setup.sh
 
 > 前置要求：已安装 Node.js（>=18）。脚本会自动安装 opencode 本体（npm 全局包 `opencode-ai`）。
 
-## 目录结构与恢复位置
+## 可选：GitHub CLI（gh）
+
+OMO 的 GitHub 自动化功能（PR 创建、issue、代码搜索等）需要 [GitHub CLI](https://cli.github.com/)。建议安装并登录：
+
+```bash
+# Windows
+winget install --id GitHub.cli -e
+
+# macOS / Linux
+# brew install gh  或访问 https://cli.github.com/
+
+# 登录（浏览器授权）
+gh auth login
+```
+
+验证配置是否正常：`omo doctor`（在 opencode 所在环境运行）。
 
 ## 目录结构与恢复位置
 
