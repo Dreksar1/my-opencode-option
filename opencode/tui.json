@@ -1,10 +1,13 @@
-{
-  "theme": "github",
-  "keybinds": {
-    "scrollbar_toggle": "ctrl+alt+s"
-  },
-  "plugin": [
-    "oh-my-openagent@latest",
-    "./plugins-custom/deepseek-balance"
-  ]
+﻿{
+    "keybinds": {
+        "scrollbar_toggle": "ctrl+alt+s"
+    },
+    "cursor": {
+        "style": "line",
+        "blinking": true
+    },
+    "plugin": [
+        "oh-my-openagent@latest",
+        "./plugins-custom/deepseek-balance"
+    ]
 }

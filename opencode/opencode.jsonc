@@ -1,5 +1,5 @@
 {
-	"plugin": ["oh-my-openagent@latest"],
+	"plugin": ["oh-my-openagent@latest", "~/.config/opencode/node_modules/superpowers"],
 	"$schema": "https://opencode.ai/config.json",
 	"provider": {
 		"zhipu": {

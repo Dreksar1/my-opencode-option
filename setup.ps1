@@ -16,9 +16,14 @@ if (-not $npmOk) {
     Write-Host "[错误] 未找到 npm。请先安装 Node.js (https://nodejs.org) 并重试。" -ForegroundColor Red
     exit 1
 }
+$gitOk = Get-Command git -ErrorAction SilentlyContinue
+if (-not $gitOk) {
+    Write-Host "[错误] 未找到 git（superpowers 插件需要 git clone）。请先安装 Git 并重试。" -ForegroundColor Red
+    exit 1
+}
 
 # ---- 1. 安装 opencode ----
-Write-Host "[1/5] 正在安装 opencode (npm 全局) ..." -ForegroundColor Yellow
+Write-Host "[1/6] 正在安装 opencode (npm 全局) ..." -ForegroundColor Yellow
 npm install -g opencode-ai
 if ($LASTEXITCODE -ne 0) {
     Write-Host "[错误] opencode 安装失败，请检查网络后重试。" -ForegroundColor Red
@@ -36,7 +41,7 @@ $targets = @(
     @{ Src = "$repo\claude";   Dst = "$homeDir\.claude" }
 )
 
-Write-Host "[2/5] 正在复制配置文件 ..." -ForegroundColor Yellow
+Write-Host "[2/6] 正在复制配置文件 ..." -ForegroundColor Yellow
 foreach ($t in $targets) {
     if (Test-Path $t.Src) {
         New-Item -ItemType Directory -Path $t.Dst -Force | Out-Null
@@ -46,7 +51,7 @@ foreach ($t in $targets) {
 }
 
 # ---- 3. 安装 opencode 插件依赖 ----
-Write-Host "[3/5] 正在安装插件依赖 (npm install) ..." -ForegroundColor Yellow
+Write-Host "[3/6] 正在安装插件依赖 (npm install) ..." -ForegroundColor Yellow
 $configDir = "$homeDir\.config\opencode"
 if (Test-Path "$configDir\package.json") {
     Push-Location $configDir
@@ -54,8 +59,23 @@ if (Test-Path "$configDir\package.json") {
     Pop-Location
 }
 
+# ---- 3.5 安装 superpowers 插件（git clone 方式，避免 npm git 依赖在 Windows 的安装问题）----
+$spDir = "$configDir\node_modules\superpowers"
+if (-not (Test-Path "$spDir\package.json")) {
+    Write-Host "[3.5/6] 正在安装 superpowers 插件 (git clone) ..." -ForegroundColor Yellow
+    if (Test-Path $spDir) { Remove-Item $spDir -Recurse -Force }
+    git clone --depth 1 https://github.com/obra/superpowers.git $spDir
+    if ($LASTEXITCODE -eq 0) {
+        Write-Host "  -> superpowers 安装完成" -ForegroundColor Green
+    } else {
+        Write-Host "  [警告] superpowers 安装失败，可稍后手动安装。" -ForegroundColor Magenta
+    }
+} else {
+    Write-Host "  -> superpowers 已存在，跳过" -ForegroundColor Green
+}
+
 # ---- 4. 检查环境变量 ----
-Write-Host "[4/5] 检查 ZHIPU_API_KEY 环境变量 ..." -ForegroundColor Yellow
+Write-Host "[4/6] 检查 ZHIPU_API_KEY 环境变量 ..." -ForegroundColor Yellow
 if (-not $env:ZHIPU_API_KEY) {
     Write-Host "  [提示] 未检测到 ZHIPU_API_KEY 环境变量。" -ForegroundColor Magenta
     Write-Host "  如需使用智谱(GLM)模型，请执行以下命令（需重新打开终端生效）：" -ForegroundColor Magenta
@@ -63,5 +83,5 @@ if (-not $env:ZHIPU_API_KEY) {
 }
 
 # ---- 5. 完成 ----
-Write-Host "[5/5] 完成! 现在运行 opencode 即可使用。" -ForegroundColor Green
+Write-Host "[5/6] 完成! 现在运行 opencode 即可使用。" -ForegroundColor Green
 Write-Host "      如果终端认不出 opencode，请重新打开一个终端窗口。" -ForegroundColor Green
